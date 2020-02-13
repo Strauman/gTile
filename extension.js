@@ -955,7 +955,7 @@ function global_keyMoveResizeEvent(type, key) {
             }
             break;
         }
-        } else {
+      } else if(type=="resize") {
         switch(key) {
             case 'right':
             if(cX < nbCols - 1) {
