@@ -157,7 +157,7 @@ const key_bindings_presets = {
 }
 const key_binding_global_resizes = {
   'action-resize-1': function() { keyChangeTiling(); },
-  'action-resize-2': function() { keyMoveResizeEvent('resize'  , 'left', true );},
+  'action-resize-2': function() { keyMoveResizeEvent('horizontal-shorten'  , 'left', true );},
   'action-resize-3': function() { keyMoveResizeEvent('resize'  , 'right', true );},
   'action-resize-4': function() { keyMoveResizeEvent('resize'  , 'up', true );},
   'action-resize-5': function() { keyMoveResizeEvent('resize'  , 'down', true );},
@@ -991,6 +991,35 @@ function keyMoveResizeEvent(type, key, is_global=false) {
             }
             break;
         }
+    } else if(type=="horizontal-shorten") {
+      switch(key) {
+          case 'right':
+          if(cX < nbCols - 1) {
+              grid.elements[cY] [cX + 1]._onHoverChanged();
+          }
+          break;
+          case 'left':
+          if(cX > 0) {
+              grid.elements[cY] [cX - 1]._onHoverChanged();
+          }
+          break;
+          case 'up':
+          if(cY > 0 ) {
+              grid.elements[cY - 1] [cX]._onHoverChanged();
+          }
+          break;
+          case 'down':
+          if(cY < nbRows - 1) {
+              grid.elements[cY + 1] [cX]._onHoverChanged();
+          }
+          break;
+      }
+    } else if(type=="horizontal-expand") {
+
+    } else if(type=="vertical-shorten") {
+
+    } else if(type=="vertical-expand") {
+
     }
 
     cX = delegate.currentElement.coordx;
