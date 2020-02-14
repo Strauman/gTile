@@ -1019,11 +1019,6 @@ function keyMoveResizeEvent(type, key, is_global=false) {
           break;
           case 'bottom':
           if(cY < nbRows) {
-              log("----------");
-              log(cY-nbRows);
-              log(cY);
-              log(nbRows);
-              log("----------");
               // grid.elements[cY + 1] [cX]._onHoverChanged();
               grid.elements[cY - 1] [cX]._onHoverChanged();
           }
@@ -1031,6 +1026,14 @@ function keyMoveResizeEvent(type, key, is_global=false) {
       }
 
     } else if(type=="expand") {
+      log("--------");
+      log("nbCols:nbRows");
+      log(""+nbCols+":"+nbRows);
+      log("fX:fY:");
+      log(""+fX+":"+fY);
+      log("cX:cY:");
+      log(""+cX+":"+cY);
+      log("--------");
       switch(key) {
           case 'right':
           if(cX < nbCols - 1) {
@@ -1038,13 +1041,13 @@ function keyMoveResizeEvent(type, key, is_global=false) {
           }
           break;
           case 'left':
-          if(cX > 0) {
+          if(fX > 0) {
               delegate.first = grid.elements [fY] [fX - 1];
               // grid.elements[cY] [cX - 1]._onHoverChanged();
           }
           break;
           case 'top':
-          if(cY > 0 ) {
+          if(fY > 0) {
               delegate.first = grid.elements [fY-1] [fX];
           }
           break;
@@ -1054,10 +1057,6 @@ function keyMoveResizeEvent(type, key, is_global=false) {
           }
           break;
       }
-    } else if(type=="vertical-shorten") {
-
-    } else if(type=="vertical-expand") {
-
     }
 
     cX = delegate.currentElement.coordx;
