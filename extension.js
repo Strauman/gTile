@@ -921,7 +921,6 @@ function keyMoveResizeEvent(type, key, is_global = false) {
     if (!focusMetaWindow) {
         return;
     }
-    log("Going on..");
     let mind = focusMetaWindow.get_monitor();
     let monitor = monitors[mind];
     let mkey = getMonitorKey(monitor);
